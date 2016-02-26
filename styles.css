@@ -1,0 +1,22 @@
+.button {
+    height: 50px;
+    width: 120px;
+    background-color: #FFF;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: block;
+}
+
+button:active {
+    background-color: #D3D3D3;
+}
+
+.blackBox {
+    height: 160px;
+    width: 160px;
+    margin: 15px;
+    background-color: black;
+    display: inline-block;
+}
+
+
