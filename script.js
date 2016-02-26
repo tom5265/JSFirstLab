@@ -10,24 +10,23 @@ document.addEventListener("DOMContentLoaded", function createButton() {
    
 }); 
   
-var divAmount = 1;
 
-       function addDiv() { 
-            
-            var newDiv = document.createElement('div');
-            newDiv.className = 'blackBox';
-            document.body.appendChild(newDiv); 
-            newDiv.id = divAmount++;
-            newDiv.onmouseenter = addHeader;
-            
-            function addHeader () {
-                var boxId = document.createElement('h2');
-                var boxText = document.createTextNode(newDiv.id);
-                boxId.appendChild(boxText);
-                newDiv.appendChild(boxId);
-            }
-    };
+function addDiv() { 
+    var newDiv = document.createElement('div');
+    var divAmount = document.getElementsByClassName('blackBox').length;       
+    newDiv.className = 'blackBox';
+    document.body.appendChild(newDiv); 
+    newDiv.id = String(divAmount);
+    newDiv.onmouseover = addHeader;    
     
+    
+    function addHeader (e) {
+    var hoveredElement = e.target;
+    hoveredElement.innerHTML = newDiv.id;
+}    
+}
+
+
    
     
  

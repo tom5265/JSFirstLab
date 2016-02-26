@@ -16,7 +16,8 @@ button:active {
     width: 160px;
     margin: 15px;
     background-color: black;
-    display: inline-block;
+    color: white;
+    float: left;
 }
 
 
