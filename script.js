@@ -20,8 +20,8 @@ function addDiv() {
     newDiv.onmouseover = addHeader;  
     newDiv.onmouseleave = removeHeader;  
     newDiv.onclick = getRandomColor;
-    
-    
+    newDiv.ondblclick = deleteSibling;
+      
     function addHeader (e) {
       var hoveredElement = e.target;
       hoveredElement.innerHTML = newDiv.id;
@@ -43,6 +43,19 @@ function getRandomColor(e) {
 }
 
 
+   
+    
+function deleteSibling(e) {
+    var clearDiv = e.target.id;
+    
+    
+    if (clearDiv % 2 === 0) {
+    e.target.nextSibling.remove();
+    }
+   
+   else  {
+       e.target.previousSibling.remove();
+   }
 
    
     
