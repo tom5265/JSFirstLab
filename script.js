@@ -46,16 +46,21 @@ function getRandomColor(e) {
    
     
 function deleteSibling(e) {
-    var clearDiv = e.target.id;
+    var divId = e.target.id;
     
     
-    if (clearDiv % 2 === 0) {
+    if (divId % 2 === 0) {
     e.target.nextSibling.remove();
     }
    
-   else  {
+   else if (divId % 2 > 0) {
        e.target.previousSibling.remove();
    }
+   
+   else {
+    alert('The element does not exist!');
+   }
+}
 
    
     
