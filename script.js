@@ -18,8 +18,19 @@ var divAmount = 1;
             newDiv.className = 'blackBox';
             document.body.appendChild(newDiv); 
             newDiv.id = divAmount++;
+            newDiv.onmouseenter = addHeader;
+            
+            function addHeader () {
+                var boxId = document.createElement('h2');
+                var boxText = document.createTextNode(newDiv.id);
+                boxId.appendChild(boxText);
+                newDiv.appendChild(boxId);
+            }
     };
     
+   
+    
+ 
         
 
 
