@@ -1,65 +1,71 @@
 
 document.addEventListener("DOMContentLoaded", function createButton() {
     var btn = document.createElement('button');
-    var text = document.createTextNode('Make Boxes!');       
-    btn.appendChild(text);                             
-    document.body.appendChild(btn);
-    btn.className = 'button'; 
-    btn.onclick = addDiv; 
-   
-   
-}); 
-  
+    var btnContainer = document.createElement('div');
+    btnContainer.id = 'btn-container';
+    var text = document.createTextNode('Make Boxes!');
 
-function addDiv() { 
+    var boxContainer = document.createElement('div');
+    boxContainer.id = 'box-container';
+
+    btn.className = 'button';
+    btn.onclick = addDiv;
+    btn.appendChild(text);
+    btnContainer.appendChild(btn);
+    document.body.appendChild(btnContainer);
+    document.body.appendChild(boxContainer);
+});
+
+function addDiv() {
     var newDiv = document.createElement('div');
-    var divAmount = document.getElementsByClassName('blackBox').length;       
+    var divAmount = document.getElementsByClassName('blackBox').length;
     newDiv.className = 'blackBox';
-    document.body.appendChild(newDiv); 
+
+    var boxContainer = document.getElementById('box-container');
+
+    boxContainer.appendChild(newDiv);
     newDiv.id = String(divAmount);
-    newDiv.onmouseover = addHeader;  
-    newDiv.onmouseleave = removeHeader;  
+    newDiv.onmouseover = addHeader;
+    newDiv.onmouseleave = removeHeader;
     newDiv.onclick = getRandomColor;
     newDiv.ondblclick = deleteSibling;
-      
-    function addHeader (e) {
-      var hoveredElement = e.target;
-      hoveredElement.innerHTML = newDiv.id;
-}    
-   function removeHeader (e) {
-    var hoveredElement = e.target;
-    hoveredElement.innerHTML = '';
-}  
 
-}
+    function addHeader(e) {
+        var hoveredElement = e.target;
+        hoveredElement.innerHTML = newDiv.id;
+    }
+    function removeHeader(e) {
+        var hoveredElement = e.target;
+        hoveredElement.innerHTML = '';
+    }
+};
 
 function getRandomColor(e) {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
-    for (var i = 0; i < 6; i++ ) {
+    for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
     e.target.style.backgroundColor = color;
-}
+};
 
-
-   
-    
 function deleteSibling(e) {
-    var divId = e.target.id;
-    
-    
+    var element = e.target;
+
+
+    var divId = parseInt(element.id, 10);
     if (divId % 2 === 0) {
-    e.target.nextSibling.remove();
+        if (element.previousElementSibling) {
+            element.previousElementSibling.remove();
+            return;
+        }
+    } else {
+        if (element.nextElementSibling) {
+            element.nextElementSibling.remove();
+            return;
+        }
     }
-   
-   else if (divId % 2 > 0) {
-       e.target.previousSibling.remove();
-   }
-   
-   else {
-    alert('The element does not exist!');
-   }
+    alert('The sibling does not exist!');
 }
 
    

@@ -19,6 +19,8 @@ button:active {
     color: white;
     float: left;
     text-align: center;
+    vertical-align: middle;
+    line-height: 160px;
 }
 
 
